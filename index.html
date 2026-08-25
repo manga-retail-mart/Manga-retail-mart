@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manga Retail Mart</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #080808;
+      color: #fff;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8, 8, 8, 0.92);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid #222;
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: #ff3b81;
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    nav a {
+      color: #aaa;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      color: #fff;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 620px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 20px;
+      background:
+        radial-gradient(circle at 50% 35%, #2b1020 0%, #100b10 35%, #080808 70%);
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 15px;
+      border: 1px solid #3b3b3b;
+      border-radius: 100px;
+      color: #ff6b9c;
+      background: #151015;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 9vw, 92px);
+      line-height: 0.95;
+      letter-spacing: -5px;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, #fff, #ff4d91);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 600px;
+      margin: auto;
+      color: #aaa;
+      font-size: 18px;
+    }
+
+    .hero-buttons {
+      margin-top: 35px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-weight: 800;
+      border: 1px solid #333;
+      transition: 0.2s;
+    }
+
+    .btn-primary {
+      background: #fff;
+      color: #000;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: #ff4d91;
+      color: #fff;
+    }
+
+    .btn-dark {
+      background: #151515;
+      color: #fff;
+    }
+
+    .btn-dark:hover {
+      background: #242424;
+    }
+
+    /* PRODUCTS */
+    .section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 90px 22px;
+    }
+
+    .section-heading {
+      margin-bottom: 35px;
+    }
+
+    .section-heading small {
+      color: #ff4d91;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .section-heading h2 {
+      font-size: 42px;
+      margin-top: 8px;
+      letter-spacing: -2px;
+    }
+
+    .section-heading p {
+      color: #888;
+      margin-top: 8px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: #111;
+      border: 1px solid #242424;
+      border-radius: 18px;
+      overflow: hidden;
+      transition: 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: #444;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+      background: #eee;
+    }
+
+    .card-info {
+      padding: 20px;
+    }
+
+    .category {
+      color: #ff4d91;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .card h3 {
+      margin: 8px 0;
+      font-size: 19px;
+    }
+
+    .card p {
+      color: #888;
+      font-size: 13px;
+      min-height: 40px;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 18px;
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    .order-btn {
+      border: 0;
+      background: #fff;
+      color: #000;
+      padding: 9px 13px;
+      border-radius: 9px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .order-btn:hover {
+      background: #ff4d91;
+      color: #fff;
+    }
+
+    /* ABOUT */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-box {
+      background: linear-gradient(145deg, #171717, #0d0d0d);
+      border: 1px solid #292929;
+      border-radius: 24px;
+      padding: 45px;
+    }
+
+    .about h2 {
+      font-size: 42px;
+      margin-bottom: 18px;
+    }
+
+    .about p {
+      color: #999;
+      margin-bottom: 15px;
+    }
+
+    .features {
+      display: grid;
+      gap: 12px;
+    }
+
+    .feature {
+      padding: 18px;
+      border: 1px solid #252525;
+      border-radius: 14px;
+      background: #111;
+    }
+
+    .feature strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .feature span {
+      color: #888;
+      font-size: 13px;
+    }
+
+    /* CONTACT */
+    .contact {
+      text-align: center;
+      padding: 100px 20px;
+      background:
+        radial-gradient(circle at center, #24101b, #080808 60%);
+    }
+
+    .contact h2 {
+      font-size: clamp(38px, 7vw, 65px);
+      letter-spacing: -3px;
+    }
+
+    .contact p {
+      color: #999;
+      margin: 15px auto 30px;
+      max-width: 500px;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid #222;
+      padding: 30px 20px;
+      text-align: center;
+      color: #666;
+      font-size: 13px;
+    }
+
+    footer strong {
+      color: #fff;
+    }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        display: none;
+      }
+
+      .hero {
+        min-height: 550px;
+      }
+
+      .hero h1 {
+        letter-spacing: -3px;
+      }
+
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      .product-image {
+        height: 350px;
+      }
+
+      .section-heading h2,
+      .about h2 {
+        font-size: 34px;
+      }
+
+      .about-box {
+        padding: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="nav">
+      <div class="logo">M
