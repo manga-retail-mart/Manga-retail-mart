@@ -1,203 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Manga Retail Mart</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manga Retail Mart</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#080808;
+  color:#fff;
+  line-height:1.5
+}
+a{color:inherit;text-decoration:none}
 
-    html {
-      scroll-behavior: smooth;
-    }
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(8,8,8,.95);
+  border-bottom:1px solid #222;
+  backdrop-filter:blur(12px)
+}
+.nav{
+  max-width:1200px;
+  margin:auto;
+  padding:18px 22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center
+}
+.logo{
+  font-size:24px;
+  font-weight:900;
+  letter-spacing:-1px
+}
+nav{
+  display:flex;
+  gap:25px
+}
+nav a{
+  color:#aaa;
+  font-weight:bold
+}
+nav a:hover{color:#fff}
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #080808;
-      color: #fff;
-      line-height: 1.5;
-    }
+.hero{
+  min-height:520px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:60px 20px;
+  background:
+    radial-gradient(circle at center,#252525 0,#111 45%,#080808 75%)
+}
+.hero h1{
+  font-size:clamp(42px,8vw,82px);
+  line-height:1;
+  margin-bottom:20px;
+  letter-spacing:-4px
+}
+.hero p{
+  color:#aaa;
+  max-width:650px;
+  margin:0 auto 30px;
+  font-size:18px
+}
+.btn{
+  display:inline-block;
+  padding:14px 24px;
+  border:1px solid #fff;
+  border-radius:6px;
+  font-weight:bold;
+  transition:.2s
+}
+.btn:hover{
+  background:#fff;
+  color:#000
+}
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+section{
+  max-width:1200px;
+  margin:auto;
+  padding:70px 22px
+}
+.section-heading{
+  margin-bottom:30px
+}
+.section-heading h2{
+  font-size:40px;
+  margin-bottom:8px
+}
+.section-heading p{color:#888}
 
-    /* HEADER */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(8, 8, 8, 0.92);
-      backdrop-filter: blur(15px);
-      border-bottom: 1px solid #222;
-    }
+.products{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px
+}
+.product{
+  background:#111;
+  border:1px solid #252525;
+  border-radius:12px;
+  overflow:hidden;
+  transition:.2s
+}
+.product:hover{
+  transform:translateY(-4px);
+  border-color:#555
+}
+.product-image{
+  height:300px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#1b1b1b;
+  font-size:55px;
+  font-weight:900
+}
+.product-info{padding:20px}
+.product h3{margin-bottom:8px}
+.product p{color:#888;font-size:14px}
+.price{
+  margin-top:15px;
+  font-size:20px;
+  font-weight:bold
+}
 
-    .nav {
-      max-width: 1200px;
-      margin: auto;
-      padding: 18px 22px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+.about{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px
+}
+.about-box{
+  background:#111;
+  border:1px solid #252525;
+  border-radius:12px;
+  padding:30px
+}
+.about h2{font-size:40px}
+.about p{color:#999;margin-top:15px}
 
-    .logo {
-      font-size: 22px;
-      font-weight: 900;
-      letter-spacing: -1px;
-    }
+.contact{
+  text-align:center;
+  background:#111;
+  border:1px solid #252525;
+  border-radius:12px;
+  padding:50px 20px
+}
+.contact p{
+  color:#999;
+  margin:10px 0 25px
+}
 
-    .logo span {
-      color: #ff3b81;
-    }
+footer{
+  border-top:1px solid #222;
+  padding:30px 20px;
+  text-align:center;
+  color:#666
+}
 
-    nav {
-      display: flex;
-      gap: 25px;
-      font-size: 14px;
-      font-weight: 700;
-    }
+@media(max-width:700px){
+  nav{display:none}
+  .hero{min-height:500px}
+  .products{grid-template-columns:1fr}
+  .about{grid-template-columns:1fr}
+  .product-image{height:350px}
+}
+</style>
+</head>
 
-    nav a {
-      color: #aaa;
-      transition: 0.2s;
-    }
+<body>
 
-    nav a:hover {
-      color: #fff;
-    }
+<header>
+  <div class="nav">
+    <div class="logo">M</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
 
-    /* HERO */
-    .hero {
-      min-height: 620px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 80px 20px;
-      background:
-        radial-gradient(circle at 50% 35%, #2b1020 0%, #100b10 35%, #080808 70%);
-    }
+<main>
 
-    .hero-content {
-      max-width: 850px;
-    }
+<section class="hero" id="home">
+  <div>
+    <h1>MANGA<br>RETAIL MART</h1>
+    <p>Discover your next favorite manga. Browse our collection and bring incredible stories home.</p>
+    <a class="btn" href="#shop">SHOP MANGA</a>
+  </div>
+</section>
 
-    .badge {
-      display: inline-block;
-      padding: 8px 15px;
-      border: 1px solid #3b3b3b;
-      border-radius: 100px;
-      color: #ff6b9c;
-      background: #151015;
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 25px;
-    }
+<section id="shop">
+  <div class="section-heading">
+    <h2>Featured Manga</h2>
+    <p>Popular titles from our collection.</p>
+  </div>
 
-    .hero h1 {
-      font-size: clamp(48px, 9vw, 92px);
-      line-height: 0.95;
-      letter-spacing: -5px;
-      margin-bottom: 25px;
-    }
+  <div class="products">
 
-    .hero h1 span {
-      background: linear-gradient(90deg, #fff, #ff4d91);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
+    <article class="product">
+      <div class="product-image">ONE<br>PIECE</div>
+      <div class="product-info">
+        <h3>One Piece</h3>
+        <p>Adventure on the Grand Line.</p>
+        <div class="price">₹499</div>
+      </div>
+    </article>
 
-    .hero p {
-      max-width: 600px;
-      margin: auto;
-      color: #aaa;
-      font-size: 18px;
-    }
+    <article class="product">
+      <div class="product-image">NARUTO</div>
+      <div class="product-info">
+        <h3>Naruto</h3>
+        <p>The journey of a young ninja.</p>
+        <div class="price">₹449</div>
+      </div>
+    </article>
 
-    .hero-buttons {
-      margin-top: 35px;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+    <article class="product">
+      <div class="product-image">BLEACH</div>
+      <div class="product-info">
+        <h3>Bleach</h3>
+        <p>Spirits, swords and unforgettable battles.</p>
+        <div class="price">₹499</div>
+      </div>
+    </article>
 
-    .btn {
-      display: inline-block;
-      padding: 14px 24px;
-      border-radius: 12px;
-      font-weight: 800;
-      border: 1px solid #333;
-      transition: 0.2s;
-    }
+    <article class="product">
+      <div class="product-image">JJK</div>
+      <div class="product-info">
+        <h3>Jujutsu Kaisen</h3>
+        <p>Enter the world of cursed energy.</p>
+        <div class="price">₹549</div>
+      </div>
+    </article>
 
-    .btn-primary {
-      background: #fff;
-      color: #000;
-    }
+    <article class="product">
+      <div class="product-image">AOT</div>
+      <div class="product-info">
+        <h3>Attack on Titan</h3>
+        <p>Humanity fights for survival.</p>
+        <div class="price">₹599</div>
+      </div>
+    </article>
 
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      background: #ff4d91;
-      color: #fff;
-    }
+    <article class="product">
+      <div class="product-image">DS</div>
+      <div class="product-info">
+        <h3>Demon Slayer</h3>
+        <p>A brother and sister face demons together.</p>
+        <div class="price">₹499</div>
+      </div>
+    </article>
 
-    .btn-dark {
-      background: #151515;
-      color: #fff;
-    }
+  </div>
+</section>
 
-    .btn-dark:hover {
-      background: #242424;
-    }
+<section id="about">
+  <div class="about">
+    <div class="about-box">
+      <h2>About Us</h2>
+      <p>
+        Manga Retail Mart is a simple online manga store built for readers
+        who love great stories, memorable characters and beautiful worlds.
+      </p>
+    </div>
 
-    /* PRODUCTS */
-    .section {
-      max-width: 1200px;
-      margin: auto;
-      padding: 90px 22px;
-    }
+    <div class="about-box">
+      <h2>Why Us?</h2>
+      <p>
+        Carefully selected titles, simple browsing and a clean shopping
+        experience for manga fans.
+      </p>
+    </div>
+  </div>
+</section>
 
-    .section-heading {
-      margin-bottom: 35px;
-    }
+<section id="contact">
+  <div class="contact">
+    <h2>Ready to Read?</h2>
+    <p>Explore the collection and find your next adventure.</p>
+    <a class="btn" href="#shop">VIEW COLLECTION</a>
+  </div>
+</section>
 
-    .section-heading small {
-      color: #ff4d91;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
+</main>
 
-    .section-heading h2 {
-      font-size: 42px;
-      margin-top: 8px;
-      letter-spacing: -2px;
-    }
+<footer>
+  © 2026 Manga Retail Mart. All rights reserved.
+</footer>
 
-    .section-heading p {
-      color: #888;
-      margin-top: 8px;
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .card {
-      background: #111;
-      border: 1px solid #242424;
-      border-radius: 18px;
-      overflow: hidden;
+</body>
+</html>      overflow: hidden;
       transition: 0.25s;
     }
 
